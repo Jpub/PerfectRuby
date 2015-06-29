@@ -1,0 +1,5 @@
+- if task.errors.any?
+  .alert.alert-error
+    %ul
+      - task.errors.full_messages.each do |msg|
+        %li= msg

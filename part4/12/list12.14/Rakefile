@@ -1,0 +1,19 @@
+# coding: utf-8
+
+require 'yaml'
+
+desc '지금까지의 식사 이름과 칼로리 이력 파일 작성'
+  file 'menu_history.yml' => 'daily.yml' do |t|
+  sh "type #{t.prerequisites.join(' ')} >> #{t.name}" # Windows에선 cat대신에 type
+end
+
+rule '.yml' => '.log' do |t|
+  data = {}
+  File.open(t.source).each do |line|
+    data.merge!(Hash[*line.chomp!.split(/,/)])
+  end
+
+  File.open(t.name, 'w') { |f|
+    f.write data.to_yaml
+  }
+end

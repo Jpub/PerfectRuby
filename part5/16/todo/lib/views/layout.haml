@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta(charset='utf-8')
+    %title Todo Application
+    %link(href='/css/bootstrap.min.css' rel='stylesheet' type='text/css')
+  %body
+    .navbar.navbar-inner
+      %a.brand(href='/tasks') Todo Application
+      %ul.nav
+        %li{class: ('active' unless @status)}
+          %a(href='/tasks') ALL Tasks
+        %li{class: ('active' if @status == 'not_yet')}
+          %a(href='/tasks?status=not_yet') NOT YET Tasks
+        %li{class: ('active' if @status == 'pending')}
+          %a(href='/tasks?status=pending') PENDONG Tasks
+        %li{class: ('active' if @status == 'done')}
+          %a(href='/tasks?status=done') DONE Tasks
+
+    .container
+      != yield

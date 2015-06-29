@@ -1,0 +1,14 @@
+.control-group{class: error_class(task, :name)}
+  %label.control-label(for='task_name') Name
+  .controls
+    %input#task_name.span3(name='name' placeholder='예: 쇼핑' type='text'){value: task.name}
+.control-group{class: error_class(task, :content)}
+  %label.control-label(for='task_content') Conent
+  .controls
+    %input#task_content.span5(name='content' placeholder='예: 우유를 산다' type='text'){value: task.content}
+- if task.persisted?
+  .control-group
+    %label.control-label(for='task_status') Status
+    .controls
+      %select#task_status(name='status')
+        != options_for_task_status(task)

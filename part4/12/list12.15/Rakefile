@@ -1,0 +1,9 @@
+namespace :check do
+  desc 'check of log file'
+  task :log do
+  end
+
+  desc 'check of yml file'
+    task :yml do
+  end
+end

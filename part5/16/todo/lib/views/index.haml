@@ -1,0 +1,28 @@
+%h1 Listing Tasks
+
+%div
+  %a(href='/tasks/new') New
+
+%table.table.table-striped.table-hover.table-bordered
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Content
+      %th Status
+      %th Created Time
+      %th(colspan=2) Action
+  %tbody
+    - @tasks.each do |task|
+      %tr
+        %td= task.id
+        %td= task.name
+        %td= task.content
+        %td= task.status_name
+        %td= task.created_at.strftime('%Y/%m/%d %H:%M:%S')
+        %td
+          %a{href: "/tasks/#{task.id}/edit"} Edit
+        %td
+          %form.form-inline(method='post'){action: "/tasks/#{task.id}"}
+            %input(name='_method' type='hidden' value='delete')
+            %input.btn.btn-danger(type='submit' value='Delete' onclick='return confirm("Delete Task?")')

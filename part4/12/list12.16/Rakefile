@@ -1,0 +1,23 @@
+# coding: utf-8
+
+namespace :make do
+  namespace :report do
+    desc '일 단위 식사 보고서 작성'
+    task :daily_report do
+    end
+
+    desc '주 단위 식사 보고서 작성'
+    task :weekly_report do
+    end
+  end
+
+  namespace :history do
+    desc '메뉴 이력 작성'
+    task :menu do
+    end
+
+    desc '취득 칼로리 이력 작성'
+    task :calorie do
+    end
+  end
+end
